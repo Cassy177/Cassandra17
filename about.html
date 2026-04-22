@@ -95,13 +95,11 @@ window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Scroll reveal
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Page transition
 const overlay = document.getElementById('pageOverlay');
 document.querySelectorAll('a[href]').forEach(link => {
     const href = link.getAttribute('href');
