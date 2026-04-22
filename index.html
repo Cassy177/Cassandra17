@@ -4,19 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cassandra | Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-<!-- Custom cursor -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- Page overlay for transitions -->
 <div class="page-overlay" id="pageOverlay"></div>
 
-<!-- Floating particles -->
 <div id="particles"></div>
 
 <nav id="navbar">
@@ -48,7 +45,7 @@
     </div>
 
     <div class="image">
-        <img src="cassandra.2.jpg" alt="Profile photo" loading="lazy">
+        <img src="image/cassandra.2.jpg" alt="Profile photo" loading="lazy">
         <div class="hero-badge"> BSIT Student at Araullo University</div>
     </div>
 </section>
@@ -58,7 +55,7 @@
 </footer>
 
 <script>
-// ── Custom cursor ──
+
 const cursor = document.getElementById('cursor');
 const ring   = document.getElementById('cursorRing');
 
@@ -72,7 +69,7 @@ document.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('mouseleave', () => {});
 });
 
-// ── Particles ──
+
 const container = document.getElementById('particles');
 for (let i = 0; i < 18; i++) {
     const p = document.createElement('div');
@@ -88,12 +85,10 @@ for (let i = 0; i < 18; i++) {
     container.appendChild(p);
 }
 
-// ── Sticky nav ──
 window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// ── Page transition ──
 const overlay = document.getElementById('pageOverlay');
 document.querySelectorAll('a[href]').forEach(link => {
     const href = link.getAttribute('href');
