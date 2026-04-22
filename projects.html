@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cassandra | Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="page-overlay" id="pageOverlay"></div>
+<div id="particles"></div>
+
+<nav id="navbar">
+    <div class="logo">CASSANDRA <span>🎀</span></div>
+    <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="projects.html" class="active">PROJECTS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+</nav>
+
+<section class="projects" id="projects">
+    <h2 class="reveal">My Projects</h2>
+    <p1 class="proj-desc reveal">Here are my sample works. Each project reflects
+        my creativity, skills, and passion for new learning in
+        technologies — from games, websites, and presentations, these
+        works gave me lots of experience and growth as a first-year BSIT student.
+    </p1>
+
+    <div class="project-container">
+
+        <div class="card reveal">
+            <div class="card-img-wrap">
+                <img src="kotsekulaypink.1.jpg" alt="Pinky Car Game" loading="lazy">
+            </div>
+            <div class="card-body">
+                <h3>Pinky Car Game</h3>
+                <p class="highlight">🏎️ Racing Game Project</p>
+                <p>A fun racing game where players control a car and avoid obstacles on the road.
+                    This project helped me practice basic game design, simple logic, and user interaction.</p>
+                <a href="#">View Project</a>
+            </div>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-img-wrap">
+                <img src="wireframe.1.jpg" alt="Frame Works Activity" loading="lazy">
+            </div>
+            <div class="card-body">
+                <h3>Frame Works Activity</h3>
+                <p class="highlight">🖼️ UI/UX Wireframe</p>
+                <p>This project shows how different screens of the Facebook app are arranged
+                    using a clear and simple layout — login, sign-up, and menu screens.
+                    Through this, I improved my skills in layout design and visual presentation.</p>
+                <a href="#">View Project</a>
+            </div>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-img-wrap">
+                <img src="trucknapanget.1.jpg" alt="Maze Game" loading="lazy">
+            </div>
+            <div class="card-body">
+                <h3>Maze Game</h3>
+                <p class="highlight">🧩 Fun Maze Game</p>
+                <p>A simple maze game where the player finds the correct path to reach the goal.
+                    This project enhanced my problem-solving skills and basic programming logic.</p>
+                <a href="#">View Project</a>
+            </div>
+        </div>
+
+        <div class="card reveal">
+            <div class="card-img-wrap">
+                <img src="comingsoon.1.jpg" alt="Coming Soon" loading="lazy">
+            </div>
+            <div class="card-body">
+                <h3>Coming Soon</h3>
+                <p class="highlight">🚀 Upcoming Project</p>
+                <p>This section is for my upcoming projects. I am continuously
+                    learning and planning to create more interactive and creative outputs.</p>
+                <a href="#">Details</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 <span>Cassandra</span> | My Portfolio Website</p>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+    cursor.style.transform = `translate(${e.clientX - 7}px, ${e.clientY - 7}px)`;
+    ring.style.transform   = `translate(${e.clientX - 19}px, ${e.clientY - 19}px)`;
+});
+
+const container = document.getElementById('particles');
+for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    const size = Math.random() * 8 + 4;
+    p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*8}s;opacity:${Math.random()*0.5+0.1};`;
+    container.appendChild(p);
+}
+
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+            setTimeout(() => e.target.classList.add('visible'), i * 120);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const overlay = document.getElementById('pageOverlay');
+document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href.startsWith('#') && !href.startsWith('http') && href.endsWith('.html')) {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            overlay.classList.add('active');
+            setTimeout(() => { window.location.href = href; }, 480);
+        });
+    }
+});
+</script>
+</body>
+</html>

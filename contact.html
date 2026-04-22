@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cassandra | Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="page-overlay" id="pageOverlay"></div>
+<div id="particles"></div>
+
+<nav id="navbar">
+    <div class="logo">CASSANDRA <span>🎀</span></div>
+    <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="projects.html">PROJECTS</a></li>
+        <li><a href="contact.html" class="active">CONTACT</a></li>
+    </ul>
+</nav>
+
+<section id="contact">
+    <h2 class="reveal">Contact Me</h2>
+    <p class="contact-subtitle reveal">I'd love to hear from you! Let's connect.</p>
+
+    <div class="contact-grid">
+        <form class="reveal" onsubmit="handleSubmit(event)">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+            <button type="submit" id="submitBtn">Send Message</button>
+        </form>
+
+        <div class="contact-info-panel reveal">
+            <h3>Let's talk!</h3>
+
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <span>0963-889-0933</span>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:cassandradelrosario32@email.com">cassandradelrosario32@email.com</a>
+            </div>
+
+            <div class="info-item">
+                <i class="fab fa-facebook"></i>
+                <a href="https://www.facebook.com/cass.delrosario.96" target="_blank">cass.delrosario.96</a>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Araullo University, Philippines</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 <span>Cassandra</span> | My Portfolio Website</p>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+    cursor.style.transform = `translate(${e.clientX - 7}px, ${e.clientY - 7}px)`;
+    ring.style.transform   = `translate(${e.clientX - 19}px, ${e.clientY - 19}px)`;
+});
+
+const container = document.getElementById('particles');
+for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    const size = Math.random() * 8 + 4;
+    p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*8}s;opacity:${Math.random()*0.5+0.1};`;
+    container.appendChild(p);
+}
+
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
+    btn.disabled = true;
+    setTimeout(() => {
+        btn.textContent = 'Send Message';
+        btn.style.background = '';
+        btn.disabled = false;
+        e.target.reset();
+    }, 3000);
+}
+
+const overlay = document.getElementById('pageOverlay');
+document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href.startsWith('#') && !href.startsWith('http') && href.endsWith('.html')) {
+        link.addEventListener('click', ev => {
+            ev.preventDefault();
+            overlay.classList.add('active');
+            setTimeout(() => { window.location.href = href; }, 480);
+        });
+    }
+});
+</script>
+</body>
+</html>

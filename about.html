@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cassandra | About</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="page-overlay" id="pageOverlay"></div>
+<div id="particles"></div>
+
+<nav id="navbar">
+    <div class="logo">CASSANDRA <span>🎀</span></div>
+    <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html" class="active">ABOUT</a></li>
+        <li><a href="projects.html">PROJECTS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+</nav>
+
+<section class="about" id="about">
+    <div class="about-img reveal">
+        <img src="cassandra.1.jpg" alt="About me photo" loading="lazy">
+    </div>
+
+    <div class="about-content">
+        <h2 class="reveal">About Me</h2>
+
+        <div class="about-box reveal">
+            <h3>Background Information</h3>
+            <p>
+                When I was a child, my dreams were wonderful — I wanted to be in criminology,
+                but things changed when I didn't pass the entrance exam at NEUST. So I decided
+                to enroll at Araullo University, and chose BSIT as my course.
+            </p>
+        </div>
+
+        <div class="about-box reveal">
+            <h3>Education / Interests</h3>
+            <p>
+                I am currently a first-year college student at Araullo University.
+                As a BSIT student, I combine what I learn in school with real-world experience to grow
+                my knowledge and skills in the IT field. Being a beginner, I know there is still so much for
+                me to learn, but I enjoy every step of the journey.
+            </p>
+            <p>
+                What excites me most is turning simple ideas into real projects that
+                can inspire and help others. As I continue to study and practice,
+                my goal is to sharpen my skills in web development and programming.
+            </p>
+        </div>
+
+        <div class="about-box reveal">
+            <p>
+                From being a BSIT student who is an extrovert and always laughing, even when things don't
+                make sense — I love meeting new people, making conversations fun, and bringing
+                good vibes wherever I go. I can code, but I'm better at making people laugh.
+                I'm still figuring life out, but one thing's for sure: I bring energy,
+                positivity, and good vibes in everything I do.
+            </p>
+        </div>
+
+        <button class="cv-btn reveal">View CV</button>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 <span>Cassandra</span> | My Portfolio Website</p>
+</footer>
+
+<script>
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+    cursor.style.transform = `translate(${e.clientX - 7}px, ${e.clientY - 7}px)`;
+    ring.style.transform   = `translate(${e.clientX - 19}px, ${e.clientY - 19}px)`;
+});
+
+const container = document.getElementById('particles');
+for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    const size = Math.random() * 8 + 4;
+    p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;animation-duration:${Math.random()*12+8}s;animation-delay:${Math.random()*8}s;opacity:${Math.random()*0.5+0.1};`;
+    container.appendChild(p);
+}
+
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Page transition
+const overlay = document.getElementById('pageOverlay');
+document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href.startsWith('#') && !href.startsWith('http') && href.endsWith('.html')) {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            overlay.classList.add('active');
+            setTimeout(() => { window.location.href = href; }, 480);
+        });
+    }
+});
+</script>
+</body>
+</html>

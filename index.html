@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cassandra | Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Page overlay for transitions -->
+<div class="page-overlay" id="pageOverlay"></div>
+
+<!-- Floating particles -->
+<div id="particles"></div>
+
+<nav id="navbar">
+    <div class="logo">CASSANDRA <span>🎀</span></div>
+    <ul>
+        <li><a href="index.html" class="active">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="projects.html">PROJECTS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+    <div class="content">
+        <h3>Hi, I'm Cassandra Del Rosario</h3>
+        <h1>BSIT<br><em>Student</em></h1>
+        <p>Bringing digital visions to life through code and design.</p>
+
+        <div class="buttons">
+            <a href="projects.html"><button class="btn1"><span>View My Work</span></button></a>
+            <a href="contact.html"><button class="btn2">Get in Touch</button></a>
+        </div>
+
+        <div class="socials">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+
+    <div class="image">
+        <img src="cassandra.2.jpg" alt="Profile photo" loading="lazy">
+        <div class="hero-badge">✨ BSIT Student at Araullo University</div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 <span>Cassandra</span> | My Portfolio Website</p>
+</footer>
+
+<script>
+// ── Custom cursor ──
+const cursor = document.getElementById('cursor');
+const ring   = document.getElementById('cursorRing');
+
+document.addEventListener('mousemove', e => {
+    cursor.style.transform = `translate(${e.clientX - 7}px, ${e.clientY - 7}px)`;
+    ring.style.transform   = `translate(${e.clientX - 19}px, ${e.clientY - 19}px)`;
+});
+
+document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.style.transform += ' scale(1.8)');
+    el.addEventListener('mouseleave', () => {});
+});
+
+// ── Particles ──
+const container = document.getElementById('particles');
+for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    const size = Math.random() * 8 + 4;
+    p.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random()*100}%;
+        animation-duration:${Math.random()*12+8}s;
+        animation-delay:${Math.random()*8}s;
+        opacity:${Math.random()*0.5+0.1};
+    `;
+    container.appendChild(p);
+}
+
+// ── Sticky nav ──
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ── Page transition ──
+const overlay = document.getElementById('pageOverlay');
+document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href.startsWith('#') && !href.startsWith('http') && href.endsWith('.html')) {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            overlay.classList.add('active');
+            setTimeout(() => { window.location.href = href; }, 480);
+        });
+    }
+});
+</script>
+</body>
+</html>
