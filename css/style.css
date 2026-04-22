@@ -11,7 +11,6 @@ html {
     scroll-behavior: smooth;
 }
 
-/* ─── Custom Cursor ─── */
 body {
     cursor: none;
     background-color: #0d0409;
@@ -44,7 +43,6 @@ body {
     transition: transform 0.35s cubic-bezier(.23,1,.32,1);
 }
 
-/* ─── Page Transition Overlay ─── */
 .page-overlay {
     position: fixed;
     inset: 0;
@@ -60,7 +58,6 @@ body {
     transform-origin: top;
 }
 
-/* ─── Particles ─── */
 #particles {
     position: fixed;
     inset: 0;
@@ -83,7 +80,6 @@ body {
     100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
 }
 
-/* ─── NAV ─── */
 nav {
     display: flex;
     justify-content: space-between;
@@ -151,7 +147,6 @@ nav a:active { transform: scale(0.9); }
 
 .logo span { color: #f06; }
 
-/* ─── HERO ─── */
 .hero {
     display: flex;
     justify-content: space-between;
@@ -173,7 +168,6 @@ nav a:active { transform: scale(0.9); }
 
 .hero > * { position: relative; z-index: 1; }
 
-/* hero text reveal */
 .content h3,
 .content h1,
 .content p,
@@ -224,7 +218,6 @@ nav a:active { transform: scale(0.9); }
     line-height: 1.7;
 }
 
-/* Buttons */
 .buttons {
     margin-top: 40px;
     display: flex;
@@ -277,7 +270,6 @@ nav a:active { transform: scale(0.9); }
     transform: translateY(-3px);
 }
 
-/* Socials */
 .socials {
     margin-top: 36px;
     display: flex;
@@ -306,7 +298,6 @@ nav a:active { transform: scale(0.9); }
     box-shadow: 0 6px 20px rgba(240,0,102,0.3);
 }
 
-/* Hero image */
 .image {
     position: relative;
     flex-shrink: 0;
@@ -342,7 +333,6 @@ nav a:active { transform: scale(0.9); }
     transform: scale(1.03) rotate(1deg);
 }
 
-/* Floating badge */
 .hero-badge {
     position: absolute;
     bottom: -20px;
@@ -363,7 +353,6 @@ nav a:active { transform: scale(0.9); }
     50%       { transform: translateY(-8px); }
 }
 
-/* ─── ABOUT ─── */
 .about {
     display: flex;
     justify-content: space-between;
@@ -487,7 +476,6 @@ nav a:active { transform: scale(0.9); }
     box-shadow: 0 8px 30px rgba(240,0,102,0.55);
 }
 
-/* ─── PROJECTS ─── */
 .projects {
     padding: 80px 60px;
     text-align: center;
@@ -496,7 +484,6 @@ nav a:active { transform: scale(0.9); }
     background: linear-gradient(180deg, #0d0409 0%, #160610 100%);
 }
 
-/* Subtle grid bg */
 .projects::before {
     content: '';
     position: absolute;
@@ -632,7 +619,6 @@ nav a:active { transform: scale(0.9); }
 .card a::after { content: '→'; }
 .card a:hover { gap: 10px; color: #ff80c0; }
 
-/* ─── CONTACT ─── */
 #contact {
     padding: 80px 80px;
     position: relative;
@@ -793,12 +779,10 @@ form button[type="submit"]:hover {
 
 .info-item a:hover { color: #f06; }
 
-/* ─── SECTION borders ─── */
 section {
     position: relative;
 }
 
-/* ─── FOOTER ─── */
 footer {
     text-align: center;
     padding: 24px;
@@ -811,7 +795,6 @@ footer {
 
 footer span { color: #f06; }
 
-/* ─── Scroll reveal (JS-driven) ─── */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -823,7 +806,6 @@ footer span { color: #f06; }
     transform: translateY(0);
 }
 
-/* ─── Responsive ─── */
 @media (max-width: 900px) {
     .hero { flex-direction: column; padding: 60px 30px; text-align: center; }
     .content h1 { font-size: 60px; }
